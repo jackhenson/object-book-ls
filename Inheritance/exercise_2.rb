@@ -1,15 +1,26 @@
-class MyCar
+class Vehicle
   attr_accessor :year, :color, :model, :speed
+
+  @@number_of_vehicles = 0
 
   def initialize(year, color, model)
     self.year = year
     self.color = color
     self.model = model
     self.speed = 0
+    @@number_of_vehicles += 1
+  end
+
+  def self.how_many_vehicles
+    puts "There are #{@@number_of_vehicles} vehicles."
   end
 
   def self.gas_mileage(gallons, miles)
     puts "#{miles/gallons} miles per gallon of gas"
+  end
+
+  def to_s
+    "This vehicle is a #{year} #{model} in the color #{color}"
   end
 
   def spray_paint(c)
@@ -34,8 +45,26 @@ class MyCar
 
   def current_speed
     puts "You are now going #{speed} mph."
-  end  
+  end
+end 
+
+class MyCar < Vehicle
+  NUMBER_OF_DOORS = 4
+end
+
+class MyTruck < Vehicle
+  NUMBER_OF_DOORS = 2
 end
 
 ford = MyCar.new('2010', 'green', 'maverick')
+chevy = MyTruck.new('2019', 'yellow', 'silerado')
 MyCar.gas_mileage(13.2, 400)
+puts ford
+ford.current_speed
+puts
+puts chevy
+chevy.speed_up(5)
+chevy.current_speed
+puts
+Vehicle.how_many_vehicles
+

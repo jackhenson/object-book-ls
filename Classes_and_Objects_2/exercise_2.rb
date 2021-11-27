@@ -12,6 +12,10 @@ class MyCar
     puts "#{miles/gallons} miles per gallon of gas"
   end
 
+  def to_s
+    "This car is a #{year} #{model} in the color #{color}"
+  end
+
   def spray_paint(c)
     self.color = c
     puts "The #{model} is now painted #{color}."
@@ -39,3 +43,5 @@ end
 
 ford = MyCar.new('2010', 'green', 'maverick')
 MyCar.gas_mileage(13.2, 400)
+puts ford
+ford.current_speed
